@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <title> YelpCamp </title>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+				<button type="button" style="margin-right:4%;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+         <!-- <span class="glyphicon glyphicon-th-large">  -->
+		 <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <!-- </span> -->
+         </button>
+                <a class="navbar-brand" href="/">Yelpcamp</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+                        <li><a href="/login">Login<span class="sr-only"></a></li>
+                        <li><a href="/register">Signup<span class="sr-only" ></a></li>
+                    <% } else { %>
+                        <li><a href="#"><%= currentUser.username %></a></li>
+                        <li><a href="/logout">Logout<span class="sr-only"></span></a></li>
+                    <%   } %>
+                </ul> 
+            </div>
+        </div>
+        </nav>   
+        <!--Message-->
+        <div class="container">
+            <!--doing only error is not sufficient because empty error is not falsy-->
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <% if(success && success.length > 0){ %>
+                <div class="alert alert-success" role="alert">
+                    <%= success %>
+                </div>
+            <% } %>
+        </div>
